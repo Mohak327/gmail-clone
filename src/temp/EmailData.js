@@ -10,7 +10,7 @@ export const emailData = [
         starred: true,
         from: 'Akansha',
         subject: 'Of Peace in Pieces',
-        message: 'sup broooooo',
+        message: 'Heyy Moki...',
         received: '08:30',
         read: true
     }, {
