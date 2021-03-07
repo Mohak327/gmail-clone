@@ -4,35 +4,57 @@ import styled from 'styled-components'
 import Compose from './buttons/Compose'
 
 import { sidebarButtonItems } from './data/SidebarButtonItems'
+import { bottomIcons } from './data/BottomIconsData'
+
+import VideocamIcon from '@material-ui/icons/Videocam'
+import KeyboardIcon from '@material-ui/icons/Keyboard'
+import AccountCircleIcon from '@material-ui/icons/AccountCircle'
+import IconButton from '@material-ui/core/IconButton'
+// Only for ripple effect.
 
 function Sidebar () {
   return (
     <Wrapper>
-      <ComposeWrapper>
-        <Compose />
-      </ComposeWrapper>
+        <TopSectionWrapper>
+            <ComposeWrapper>
+                <Compose />
+            </ComposeWrapper>
 
-      <SideButtonsWrapper>
-        {
-          sidebarButtonItems.map(item => (
-            <SidebarButtonItem>
-              {item.icon} {item.text}
-            </SidebarButtonItem>
-          ))
-        }
-      </SideButtonsWrapper>
+            <SideButtonsWrapper>
+            {
+                sidebarButtonItems.map(item => (
+                    <SidebarButtonItem>
+                    {item.icon} {item.text}
+                    </SidebarButtonItem>
+                ))
+            }
+            </SideButtonsWrapper>
+        </TopSectionWrapper>
 
-      <MeetWrapper>
-        {/* Google meet stuff */}
-      </MeetWrapper>
 
-      <HangoutsWrapper>
-        {/* hangouts stuff */}
-      </HangoutsWrapper>
+        <BottomSectionWrapper>
 
-      <BottomIconsWrapper>
-        {/* bottom icons */}
-      </BottomIconsWrapper>
+            <SidebarSectionWrapper>
+                <Title>Meet</Title>
+                <p><VideocamIcon />New Meeting</p>
+                <p><KeyboardIcon />Join Meeting</p>
+            </SidebarSectionWrapper>
+
+            <SidebarSectionWrapper>
+                <Title>Hangouts</Title>
+                <p><AccountCircleIcon />Mohak Sharma</p>
+            </SidebarSectionWrapper>
+
+            <BottomIconsWrapper>
+                {
+                bottomIcons.map(icon => (
+                    <>
+                    <IconButton>{icon}</IconButton>
+                    </>
+                ))
+                }
+            </BottomIconsWrapper>
+        </BottomSectionWrapper>
     </Wrapper>
   )
 }
@@ -41,7 +63,10 @@ export default Sidebar
 
 const Wrapper = styled.div`
   border-right: 1px solid lightgray;
-  height: 100vh;
+  height: 90vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 `
 const ComposeWrapper = styled.div`
   display: grid;
@@ -53,7 +78,7 @@ const SideButtonsWrapper = styled.div`
 `
 const SidebarButtonItem = styled.div`
   display: grid;
-  grid-template-columns: 14% auto;
+  grid-template-columns: 20% auto;
   cursor: pointer;
   color: gray;
   padding: 5px 25px;
@@ -64,6 +89,48 @@ const SidebarButtonItem = styled.div`
     background-color: #f5f7f7;
   }
 `
-const MeetWrapper = styled.div``
-const HangoutsWrapper = styled.div``
-const BottomIconsWrapper = styled.div``
+
+const Title = styled.h4`
+    padding-left: 25px;
+    margin-top: 10px;
+    margin-bottom: 5px;
+`
+const SidebarSectionWrapper = styled.div`
+    border-top: 1px solid lightgray;
+
+    p{
+        display: grid;
+        grid-template-columns: 20% auto;
+        cursor: pointer;
+        color: gray;
+        padding: 5px 25px;
+        :hover{
+            background-color: #f5f7f7;
+        }
+    }
+`
+
+const BottomIconsWrapper = styled.div`
+    display: flex;
+    justify-content: center;
+    color: gray;
+    border-top: 1px solid lightgray;
+    margin-top: 10px;
+
+
+    .MuiSvgIcon-root{
+        padding: 3px 0;
+        // margin-top: 10px;
+
+        :hover{
+            background-color: #f5f7f7;
+        }
+    }
+`
+const TopSectionWrapper = styled.div`
+
+`
+
+const BottomSectionWrapper = styled.div`
+    margin-bottom: 3px;
+`
